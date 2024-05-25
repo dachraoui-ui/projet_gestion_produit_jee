@@ -21,10 +21,11 @@ public class MyServlet extends jakarta.servlet.http.HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		String p = request.getParameter("profile");
 		String l=request.getParameter("login");
 		String m=request.getParameter("mdp");
-		User u=new User(l,m);
-		boolean rslt=u.verif(l, m);	
+		User u=new User(p,l,m);
+		boolean rslt=u.verif(p,l,m);
 		request.setAttribute("result", rslt);
         request.getRequestDispatcher("/Resultat.jsp").forward(request, response);
 	}

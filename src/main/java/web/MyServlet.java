@@ -6,8 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import metier.User;
-import metier.Produit;
+import Metier.User;
+import Metier.Produit;
 import java.util.List;
 import dao.ProduitDaoImpl;
 
@@ -17,30 +17,11 @@ import dao.ProduitDaoImpl;
 @WebServlet (name = "ms", urlPatterns = {"/MyServlet", "*.do", "/updateProduit.send"})
 public class MyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    /*public MyServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }*/
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}*/
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
 		if (path.equals("/MyServlet")) {
-			// TODO Auto-generated method stub
+			
 			String login = request.getParameter("login");
 			String pwd = request.getParameter("pwd");
 			
@@ -49,17 +30,11 @@ public class MyServlet extends HttpServlet {
 			String resultStr;
 			if (result != null) {
 				result = result.toUpperCase();
-				resultStr = "Authentification avec succes";
+				resultStr = "Authentification";
 				request.setAttribute("result", resultStr);
 				ProduitDaoImpl produitDao = new ProduitDaoImpl();
 				List<Produit> produits = produitDao.getProduits();
-				request.setAttribute("produits", produits);
-				if (result.equals("ADMIN")) {
-					request.getRequestDispatcher("home.jsp").forward(request, response);
-				} else if (result.equals("USER")) {
-					request.getRequestDispatcher("result.jsp").forward(request, response);
-				}
-				
+				request.setAttribute("produits", produits);	
 			} else {
 				response.sendRedirect("login.html");
 			}
@@ -72,7 +47,7 @@ public class MyServlet extends HttpServlet {
 			produitDao.save(p);
 			List<Produit> produits = produitDao.getProduits();
 			request.setAttribute("produits", produits);
-			String resultStr = "Authentification avec succes";
+			String resultStr = "Authentification ";
 			request.setAttribute("result", resultStr);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		} else if (path.equals("/updateProduit.do")) {
@@ -87,7 +62,7 @@ public class MyServlet extends HttpServlet {
 			produitDao.updateProduit(produit);
 			List<Produit> produits = produitDao.getProduits();
 			request.setAttribute("produits", produits);
-			String resultStr = "Authentification avec succes";
+			String resultStr = "Authentification ";
 			request.setAttribute("result", resultStr);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}
@@ -96,18 +71,18 @@ public class MyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
 		if (path.equals("/deleteProduit.do")) {
-			// Get the product ID to delete from the request parameter
+			
 		    Long productId = Long.parseLong(request.getParameter("id"));
 		    
-		    // Call the deleteProduit method in ProduitDaoImpl to delete the product
+		   
 		    ProduitDaoImpl produitDao = new ProduitDaoImpl();
 		    produitDao.deleteProduit(productId);
 		    List<Produit> produits = produitDao.getProduits();
 		    request.setAttribute("produits", produits);
-		    String resultStr = "Authentification avec succes";
+		    String resultStr = "Authentification ";
 			request.setAttribute("result", resultStr);
 		    
-		    // Redirect back to the home.jsp page
+		   
 		    request.getRequestDispatcher("home.jsp").forward(request, response);
 		} else if (path.equals("/updateProduit.send")) {
 			Long productId = Long.parseLong(request.getParameter("id"));
@@ -121,7 +96,7 @@ public class MyServlet extends HttpServlet {
 	        
 	        ProduitDaoImpl produitDao = new ProduitDaoImpl();
 	        List<Produit> filteredProduits = produitDao.produitsParMC(searchProduits);
-	        String resultStr = "Authentification avec succes";
+	        String resultStr = "Authentification";
 			
 	        request.setAttribute("result", resultStr);
 	        request.setAttribute("produits", filteredProduits);

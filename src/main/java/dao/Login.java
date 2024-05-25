@@ -18,9 +18,9 @@ public class Login {
 		{ 
 		 try
 		 {
-		    PreparedStatement ps= conn.prepareStatement("insert into USER values(?,?,?)");
+		    PreparedStatement ps= conn.prepareStatement("insert into users values(?,?,?)");
 		    ps.setString(1,v.getLogin());
-		    ps.setString(2,v.getMdp());
+		    ps.setString(2,v.getPwd());
 		    ps.setString(3,v.getProfile());
 		    ps.executeUpdate();
 		    System.out.println("Utilisateur ajouté");
