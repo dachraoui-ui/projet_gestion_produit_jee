@@ -25,7 +25,7 @@ public class MyServlet extends jakarta.servlet.http.HttpServlet {
 		String l=request.getParameter("login");
 		String m=request.getParameter("mdp");
 		User u=new User(p,l,m);
-		boolean rslt=u.verif(p,l,m);
+		String rslt=u.verif();
 		request.setAttribute("result", rslt);
         request.getRequestDispatcher("/Resultat.jsp").forward(request, response);
 	}

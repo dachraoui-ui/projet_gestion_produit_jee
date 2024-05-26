@@ -24,8 +24,10 @@ public class MyServlet extends HttpServlet {
 			
 			String login = request.getParameter("login");
 			String pwd = request.getParameter("pwd");
-			
-			User u = new User(login, pwd);
+			String profile = request.getParameter("profile");
+
+
+			User u = new User(profile,login, pwd);
 			String result = u.verif();
 			String resultStr;
 			if (result != null) {

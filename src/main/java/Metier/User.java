@@ -45,6 +45,7 @@ public class User {
 	        
 	        String sqlQuery = "SELECT profile FROM users WHERE login = ? AND pwd = ?";
 	        PreparedStatement stmt = conn.prepareStatement(sqlQuery);
+
 	        stmt.setString(1, login);
 	        stmt.setString(2, pwd);
 	        ResultSet res = stmt.executeQuery();
