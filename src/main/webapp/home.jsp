@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List" %>
-<%@ page import="metier.Produit" %>
+<%@ page import="Metier.Produit" %>
 <%
     String result = (String) request.getAttribute("result");
     List<Produit> produits = (List<Produit>) request.getAttribute("produits");
