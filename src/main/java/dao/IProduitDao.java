@@ -5,9 +5,9 @@ import Metier.Produit;
 
 
 public interface IProduitDao {
-	public Produit save(Produit p);
-	public List<Produit> produitsParMC(String mc);
-	public Produit getProduit(Long id);
-	public Produit updateProduit(Produit p);
-	public void deleteProduit(Long id);
+	 Produit save(Produit p);
+	 List<Produit> produitsParMC(String mc);
+	 Produit getProduit(Long id);
+	 Produit updateProduit(Produit p);
+	 void deleteProduit(Long id);
 }
