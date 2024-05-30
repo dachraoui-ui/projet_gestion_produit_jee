@@ -15,15 +15,15 @@ public class TestDao {
 			System.out.println(p);
 		}
 		
-		System.out.println("__________________________");
+		System.out.println("________");
 		System.out.println(pdao.getProduit((long) 1).toString());
 		
-		System.out.println("__________________________");
+		System.out.println("_________");
 		Produit p = new Produit("Samsung A30", 870);
 		p.setIdProduit((long) 1);
 		System.out.println(pdao.updateProduit(p));
 
-		System.out.println("__________________________");
+		System.out.println("___________");
 		pdao.deleteProduit((long)5);
 	}
 }
