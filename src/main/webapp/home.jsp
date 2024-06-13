@@ -116,6 +116,7 @@
         }
         .add-product:hover {
             background-color: #218838;
+            transition : scale(1.1);
         }
     </style>
 </head>
